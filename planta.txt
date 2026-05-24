@@ -1,0 +1,115 @@
+Para um backend completo de restaurante no Django + Django REST Framework, você pode separar em apps assim:
+
+Base principal
+clientes
+cardapios
+pedidos
+itens_pedido
+pagamentos
+funcionarios
+mesas
+reservas
+Controle interno
+estoque
+fornecedores
+compras
+caixa
+financeiro
+Delivery
+enderecos
+entregas
+cupons
+Autenticação
+usuarios
+autenticacao
+Extras profissionais
+avaliacoes
+notificacoes
+relatorios
+dashboard
+logs
+Estrutura MUITO comum
+restaurant_backend/
+│
+├── clientes/
+├── cardapios/
+├── pedidos/
+├── pagamentos/
+├── estoque/
+├── funcionarios/
+├── entregas/
+├── reservas/
+├── financeiro/
+└── autenticacao/
+Ordem boa para construir
+clientes
+cardapios
+pedidos
+itens_pedido
+pagamentos
+autenticação
+estoque
+entrega
+relatórios
+Apps mais importantes de verdade
+
+Se quiser começar profissional sem exagerar:
+
+clientes
+cardapios
+pedidos
+pagamentos
+autenticacao
+estoque
+
+Isso já parece backend real.
+
+Relacionamentos principais
+Cliente → Pedido
+cliente = models.ForeignKey(...)
+Pedido → Itens
+pedido = models.ForeignKey(...)
+Item → Produto/Cardápio
+produto = models.ForeignKey(...)
+Funcionalidades que impressionam
+JWT Auth
+Swagger
+Permissões por funcionário
+Upload de imagem do prato
+Status do pedido
+WebSocket para pedido em tempo real
+Paginação
+Filtros
+Logs
+Relatórios PDF
+Status de pedido
+
+Exemplo profissional:
+
+STATUS = [
+    ('PENDENTE', 'Pendente'),
+    ('PREPARANDO', 'Preparando'),
+    ('SAIU', 'Saiu para entrega'),
+    ('ENTREGUE', 'Entregue'),
+]
+Ideia de fluxo
+Cliente cria pedido
+↓
+Pedido recebe itens
+↓
+Sistema calcula total
+↓
+Pagamento aprovado
+↓
+Estoque diminui
+↓
+Entrega iniciada
+↓
+Pedido finalizado
+Bibliotecas úteis
+Django REST Framework
+drf-spectacular
+Simple JWT
+django-filter
+Celery
+Redis
