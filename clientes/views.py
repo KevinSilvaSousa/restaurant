@@ -2,9 +2,42 @@ from django.shortcuts import render
 from .models import ClientesModel
 from django.http import HttpResponse
 
-# Create your views here.
 
-
+def buscar_id_cliente(request, id):
+    nome_cliente = ClientesModel.objects.all(id=id)
+    if request.method == 'GET':
+        return HttpResponse ('cliente criado ou existente no banco de dados')
+    return nome_cliente
+    
 def criar_cliente(request):
     nome_cliente = ClientesModel.objects.create()
+    if request.method == "POST":
+        return nome_cliente
     return HttpResponse ('cliente criado!')
+
+
+def atualizar_cliente(request, id, nome):
+    if request.method == 'PUT':
+        nome_cliente = ClientesModel.objects.filter(id=id)
+        cliente_atualizar = nome_cliente.get()
+        cliente_atualizar.nome = nome
+        cliente_atualizar.save()
+        return HttpResponse ('Cliente atualizado!')
+    
+
+
+def deletar_cliente(request, id, nome):
+    if request.method == 'DELETE':
+        nome_cliente = ClientesModel.objects.filter(id=id)
+        deletar = nome_cliente.get()
+        deletar.delete()
+        print(f"cliente {nome} Deletado!")
+    return HttpResponse ('Cliente Deletado!')
+
+
+
+
+
+
+
+
