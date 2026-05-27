@@ -12,7 +12,7 @@ def criar_pedido(request):
 def visualizar_pedido(request, id):
     pedido = CardapioModel.objects.filter(id=id)
     if request.method == 'GET':
-        return pedido
+        return HttpResponse(pedido)
     return HttpResponse(f'Pedido do id: {id}')
 
 
