@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path
 from clientes.views import criar_cliente, buscar_id_cliente, atualizar_cliente, deletar_cliente
 
