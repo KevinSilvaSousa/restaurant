@@ -2,7 +2,7 @@ from django.db import models
 from clientes.models import ClientesModel
 from cardapio.models import CardapioModel
 
-class ItemPedidoModel(models.Model):
+class PedidoModel(models.Model):
     STATUS_PEDIDO = (
     ('PENDENTE', 'Pendente'),
     ('EM_PREPARO', 'Em preparo'),
@@ -18,10 +18,8 @@ class ItemPedidoModel(models.Model):
         ('GRANDE', 'ENORME')
     )
 
-
-    pedido_cliente = models.ForeignKey(ClientesModel, on_delete=models.CASCADE)
-    prato_cliente = models.ManyToManyField(CardapioModel, through='ItemPedidoModel', related_name='pedidos', choices=STATUS_PEDIDO)
-    tamanho_lanche = models.CharField(choices=TAMANHO)
+    pedido_cliente = models.ForeignKey(ClientesModel,on_delete=models.CASCADE)
+    prato_cliente = models.ManyToManyField(CardapioModel,  through='ItemPedidoModel',related_name='pedidos')
+    tamanho_lanche = models.CharField(max_length=20,choices=TAMANHO)
     criado_em = models.DateTimeField(auto_now_add=True)
-    atualizado_em = models.DateTimeField(auto_now_add=True)
-
+    atualizado_em = models.DateTimeField(auto_now=True)
