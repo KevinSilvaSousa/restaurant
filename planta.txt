@@ -33,7 +33,7 @@ restaurant_backend/
 │
 ├── clientes/
 ├── cardapios/
-├── pedidos/
+├── pedidos/item/
 ├── pagamentos/
 ├── estoque/
 ├── funcionarios/

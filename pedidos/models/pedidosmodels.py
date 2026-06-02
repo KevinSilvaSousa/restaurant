@@ -1,8 +1,9 @@
 from django.db import models
 from clientes.models import ClientesModel
 from cardapio.models import CardapioModel
-
+#from .itempedidomodels import ItemPedidoModel
 class PedidoModel(models.Model):
+    """Esse model será usado para representar um prato/produto do restaurante."""
     STATUS_PEDIDO = (
     ('PENDENTE', 'Pendente'),
     ('EM_PREPARO', 'Em preparo'),
@@ -18,8 +19,9 @@ class PedidoModel(models.Model):
         ('GRANDE', 'ENORME')
     )
 
-    prato_cliente = models.ForeignKey(ClientesModel,on_delete=models.CASCADE)
-    pedido_cliente = models.ManyToManyField(CardapioModel,  through='ItemPedidoModel',related_name='pedidos')
+    pedido_cliente = models.ForeignKey(ClientesModel, on_delete=models.CASCADE)
+    prato_cliente = models.ForeignKey(CardapioModel,on_delete=models.CASCADE)
+    #prato_cardapio = models.ForeignKey(ItemPedidoModel,on_delete=models.CASCADE)
     tamanho_lanche = models.CharField(max_length=20,choices=TAMANHO)
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)

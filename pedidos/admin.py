@@ -10,4 +10,4 @@ admin.site.register(ItemPedidoModel)
 class PedidoClienteAdmin(admin.ModelAdmin):
     readonly_fields = ("criado_em", "atualizado_em")
 
-    list_display = ('prato_cliente','tamanho_lanche','criado_em', 'atualizado_em', 'status_pedido')
+    list_display = ('pedido_cliente','tamanho_lanche') 

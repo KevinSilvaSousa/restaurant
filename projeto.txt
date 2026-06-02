@@ -1,0 +1,5 @@
+Model dos Clientes: O usuário/cliente irá entrar e logar, e logo na tela inicial, tera onde fazer os pedidos e o cardapio.
+O admin pode criar, visualizar, apagar e atualizar, assim fazendo o CRUD completo.
+
+Model Cardapio:É pra ver o cardapio inteiro do projeto backend do restaurante. 
+O usuario pode somente visualizar. Nesse o admin poderá somente visualizar e criar itens novos.
