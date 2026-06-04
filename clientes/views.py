@@ -4,10 +4,10 @@ from django.http import HttpResponse
 
 
 def buscar_id_cliente(request, id):
-    nome_cliente = ClientesModel.objects.all(id=id)
+    cliente = ClientesModel.objects.get(id=id)
     if request.method == 'GET':
-        return HttpResponse ('cliente criado ou existente no banco de dados')
-    return nome_cliente
+         return HttpResponse(cliente.nome)
+    
     
 def criar_cliente(request):
     nome_cliente = ClientesModel.objects.create()

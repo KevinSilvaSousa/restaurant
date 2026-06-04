@@ -10,5 +10,5 @@ class ItemPedidoModel(models.Model):
     quantidade_kg = models.IntegerField(default=1)
 
     def __str__(self):
-        return f'{self.pedido}'
+        return f'{self.cliente}'
 
