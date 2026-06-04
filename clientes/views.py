@@ -33,11 +33,3 @@ def deletar_cliente(request, id, nome):
         deletar.delete()
         print(f"cliente {nome} Deletado!")
     return HttpResponse ('Cliente Deletado!')
-
-
-
-
-
-
-
-
