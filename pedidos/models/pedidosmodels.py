@@ -12,21 +12,18 @@ class PedidoModel(models.Model):
     ('ENTREGUE', 'Entregue'),
     ('CANCELADO', 'Cancelado'),
 )
-    
-    TAMANHO = (
-        ('PEQUENO', 'BASICA'),
-        ('MEDIO', 'INTERMEDIARIO'),
-        ('GRANDE', 'ENORME')
-    )
 
-    pedido_cliente = models.ForeignKey(ClientesModel, on_delete=models.CASCADE)
-    prato_cliente = models.ForeignKey(CardapioModel,on_delete=models.CASCADE)
-    #prato_cardapio = models.ForeignKey(ItemPedidoModel,on_delete=models.CASCADE)
-    tamanho_lanche = models.CharField(max_length=20,choices=TAMANHO)
+    pedido_cliente = models.ForeignKey(ClientesModel, on_delete=models.CASCADE, related_name='pedidos')
+    prato_cliente= models.ManyToManyField(CardapioModel,through='ItemPedidoModel')
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
     status_pedido = models.CharField(max_length=20, choices=STATUS_PEDIDO)
 
-
     def __str__(self):
         return f'{self.pedido_cliente}: {self.prato_cliente}'
+    
+
+    """
+    pedido = Aqui seleciona o cliente que quer fazer o pedido
+    prato = Aqui seleciona o prato que existe no CardapioModel
+    """
