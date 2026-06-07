@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from .models import ClientesModel
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 
 def buscar_id_cliente(request, id):
     cliente = ClientesModel.objects.get(id=id)
     if request.method == 'GET':
-         return HttpResponse(cliente.nome)
+         return HttpResponse(cliente.nome) 
+    
+    if cliente == 500:
+        cliente =  get_object_or_404(ClientesModel, id=id)
+
     
     
 def criar_cliente(request):
