@@ -38,3 +38,15 @@ def deletar_cliente(request, id, nome):
         deletar.delete()
         print(f"cliente {nome} Deletado!")
     return HttpResponse ('Cliente Deletado!')
+
+
+def listar_clientes(request):
+    if request.method == 'GET':
+        clientes = ClientesModel.objects.all()
+        texto = " "
+
+        for cliente in clientes:
+            texto+= cliente.nome + " <br></br>"
+
+
+    return HttpResponse(texto)
