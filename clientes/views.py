@@ -18,7 +18,7 @@ def criar_cliente(request):
     nome_cliente = ClientesModel.objects.create()
     if request.method == "POST":
         return nome_cliente
-    return HttpResponse ('cliente criado!')
+
 
 
 def atualizar_cliente(request, id, nome):

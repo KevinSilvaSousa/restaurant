@@ -37,3 +37,11 @@ def atualizar_pedido(request, id, cliente_cardapio):
         pedido.cliente_cardapio = cliente_cardapio
         atualizar_pedido.save()
         return HttpResponse("Pedido Atualizado")
+    
+
+def listar_pedidos(request, id):
+    if request.method == 'GET':
+        pedidos = PedidoModel.objects.filter(id=id)
+        text = " "
+        for p in pedidos:
+            text += p.nome + "<br></br>"
