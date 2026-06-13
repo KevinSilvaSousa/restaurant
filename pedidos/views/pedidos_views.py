@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from cardapio.models import CardapioModel
 from django.http import HttpResponse
-from .pedidosmodels import PedidoModel
+from ..models.pedidosmodels import PedidoModel
 
 
 

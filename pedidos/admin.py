@@ -1,5 +1,8 @@
 from django.contrib import admin
-from pedidos.pedidosmodels import PedidoModel
+from pedidos.models.pedidosmodels import PedidoModel
+from .models.item_pedido_models import ItemPedido
+
+admin.site.register(ItemPedido)
 @admin.register(PedidoModel)
 class PedidoClienteAdmin(admin.ModelAdmin):
     def prato_cliente(self, obj):
