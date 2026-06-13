@@ -1,10 +1,11 @@
 Para um backend completo de restaurante no Django + Django REST Framework, você pode separar em apps assim:
 
-Base principal
-clientes
-cardapios
-pedidos
-itens_pedido
+Base principal - check
+clientes - check
+cardapios - check
+pedidos - check
+itens_pedido - check
+
 pagamentos
 funcionarios
 mesas

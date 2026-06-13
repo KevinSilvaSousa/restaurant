@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import ClientesModel
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from pedidos.models.item_pedido_models import ItemPedido
 
 
 def buscar_id_cliente(request, id):
@@ -48,5 +49,21 @@ def listar_clientes(request):
         for cliente in clientes:
             texto+= cliente.nome + " <br></br>"
 
-
     return HttpResponse(texto)
+
+
+def mostrar_pedido_cliente(request, id):
+    if request.method == 'GET':
+        cliente_pedido_todos = ClientesModel.objects.filter(id=id)
+        itens = ItemPedido.objects.filter(id=id)
+        text = " \n"
+
+        for cliente in cliente_pedido_todos:
+            text += f"Cliente: {cliente.nome} \n\n"
+        for pedido in  itens:
+            text += f"Pedido: {pedido.pedido} \n\n"
+        
+        return HttpResponse(f"{text}")
+            
+
+ 
