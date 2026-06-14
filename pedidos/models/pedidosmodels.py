@@ -2,6 +2,7 @@ from django.db import models
 from clientes.models import ClientesModel
 from cardapio.models import CardapioModel
 
+
 class PedidoModel(models.Model):
     """Esse model será usado para representar um prato/produto do restaurante."""
     STATUS_PEDIDO = (
@@ -13,6 +14,7 @@ class PedidoModel(models.Model):
     ('CANCELADO', 'Cancelado'),
 )
 
+    
     pedido_cliente = models.ForeignKey(ClientesModel, on_delete=models.CASCADE, related_name='pedidos')
     prato_cliente = models.ForeignKey(CardapioModel, on_delete=models.CASCADE, related_name='pedidos')    
     criado_em = models.DateTimeField(auto_now_add=True)

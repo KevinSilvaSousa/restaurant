@@ -5,8 +5,8 @@ clientes - check
 cardapios - check
 pedidos - check
 itens_pedido - check
+pagamentos - fazendo
 
-pagamentos
 funcionarios
 mesas
 reservas
@@ -22,7 +22,6 @@ entregas
 cupons
 Autenticação
 usuarios
-autenticacao
 Extras profissionais
 avaliacoes
 notificacoes
