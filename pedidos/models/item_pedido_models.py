@@ -1,11 +1,11 @@
 from django.db import models
 from clientes.models import ClientesModel
-from .pedidosmodels import PedidoModel
 from cardapio.models import CardapioModel
+from .pedidosmodels import PedidoModel
 
 class ItemPedido(models.Model):
         pedido = models.ForeignKey(
-        PedidoModel,
+        ClientesModel,
         on_delete=models.CASCADE,
         related_name='itens'
         )

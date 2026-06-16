@@ -1,7 +1,7 @@
 from django.db import models
 from clientes.models import ClientesModel
 from cardapio.models import CardapioModel
-
+from pagamentos.models import PaymentModel
 
 class PedidoModel(models.Model):
     """Esse model será usado para representar um prato/produto do restaurante."""
@@ -22,6 +22,7 @@ class PedidoModel(models.Model):
     status_pedido = models.CharField(max_length=20, choices=STATUS_PEDIDO)
     quantidade_kg = models.IntegerField(default=0)
     quantidade_pedido = models.IntegerField(default=1)
+    pagamento = models.OneToOneField(PaymentModel, on_delete=models.CASCADE, related_name='pagamento')
 
     def __str__(self):
         return f'{self.pedido_cliente}: {self.prato_cliente}'

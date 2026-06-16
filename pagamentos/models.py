@@ -1,5 +1,4 @@
 from django.db import models
-from pedidos.models.pedidosmodels import PedidoModel
 
 # Create your models here.
 
@@ -16,9 +15,9 @@ class PaymentModel(models.Model):
         ('RECUSADO', 'Recusado'),
     )
     pedido = models.OneToOneField(
-        PedidoModel,
+        'pedidos.PedidoModel',
         on_delete=models.CASCADE,
-        related_name='pagamento'
+        related_name='pedidos'
     )
 
     forma_pagamento = models.CharField(
