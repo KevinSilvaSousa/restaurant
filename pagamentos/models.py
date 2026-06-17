@@ -14,9 +14,8 @@ class PaymentModel(models.Model):
         ('APROVADO', 'Aprovado'),
         ('RECUSADO', 'Recusado'),
     )
-    pedido = models.OneToOneField(
+    pedido = models.ManyToManyField(
         'pedidos.PedidoModel',
-        on_delete=models.CASCADE,
         related_name='pedidos'
     )
 
