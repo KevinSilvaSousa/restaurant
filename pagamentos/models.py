@@ -14,9 +14,10 @@ class PaymentModel(models.Model):
         ('APROVADO', 'Aprovado'),
         ('RECUSADO', 'Recusado'),
     )
-    pedido = models.ManyToManyField(
+    pedido = models.OneToOneField(
         'pedidos.PedidoModel',
-        related_name='pedidos'
+        related_name='pedidos',
+        on_delete=models.CASCADE
     )
 
     forma_pagamento = models.CharField(
@@ -38,6 +39,10 @@ class PaymentModel(models.Model):
     data_pagamento = models.DateTimeField(
         auto_now_add=True
     )
+
+    def save(self, *args, **kwargs):
+        self.valor = self.pedido.valor_total()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Pagamento Pedido #{self.pedido.id}"

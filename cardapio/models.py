@@ -10,7 +10,10 @@ class CardapioModel(models.Model):
     )
 
     prato = models.CharField(max_length=1000)
-    valor = models.CharField(max_length=1000000000000)
+    valor = models.DecimalField(
+    max_digits=10,
+    decimal_places=2
+)
     detalhes_prato = models.CharField(max_length=1000000000000)
     tamanho_prato = models.CharField(choices=TAMANHO)
 
