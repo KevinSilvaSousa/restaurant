@@ -45,4 +45,4 @@ class PaymentModel(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Pagamento Pedido #{self.pedido.id}"
+        return f"Pagamento Pedido #{self.pedido.pedido_cliente}"
